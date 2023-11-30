@@ -17,6 +17,7 @@ def janken
     return false
   end
 
+  #0~3以外の入力時警告
   if (player_hand != 0) && (player_hand != 1) && (player_hand != 2) && (player_hand != 3)
     puts "0~3の数値を入力してください"
     return false
@@ -28,9 +29,12 @@ def janken
   puts "敵は#{jankens[enemy_hand]}を出しました。"
   puts "--------------------------------------------"
 
+  #あいこの処理
   if player_hand == enemy_hand
     puts "あいこで..."
     return true
+
+    #ジャンケンに勝って自分が指さす側
   elsif (player_hand == 0 && enemy_hand == 1) || (player_hand == 1 && enemy_hand == 2) || (player_hand == 2 && enemy_hand == 0)
     puts "自分：「あっちむいて...」"
     puts "0(上), 1(下), 2(左), 3(右)"
@@ -38,6 +42,7 @@ def janken
     player_direction = gets.to_i
     enemy_direction = rand(4)
 
+    #0~3以外入力時警告
     if (player_direction != 0) && (player_direction != 1) && (player_direction != 2) && (player_direction != 3)
       puts "0~3の数値を入力してください"
       return false
@@ -58,6 +63,7 @@ def janken
       return true
     end
 
+    #ジャンケン負けて相手が指差す側
   else
     puts "敵：「あっちむいて...」"
     puts "0(上), 1(下), 2(左), 3(右)"
@@ -82,6 +88,7 @@ def janken
   end
 end
 
+#勝敗がつくまでjankenを繰り返す
 next_game = true
 
 while next_game
